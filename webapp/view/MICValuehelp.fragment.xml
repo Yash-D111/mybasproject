@@ -1,0 +1,30 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="_IDGenSelectDialog2"
+        title="Inspection Specification"
+        growingThreshold="20"
+        liveChange="_onLiveChange"
+        search="_onSearch"
+        confirm="_onMICValueHelpConfirm"
+        multiSelect="true"
+        items="{MICDataModel>/results}"
+    >
+        <customData>
+            <core:CustomData
+                key="selectedPropertyPath"
+                value="{MICDataModel>InspectionSpecification}"
+                writeToDom="false"
+            />
+        </customData>
+        <items>
+            <StandardListItem
+                id="_IDGenStandardListItem2"
+                title="{MICDataModel>InspectionSpecification}"
+                infoState="None"
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

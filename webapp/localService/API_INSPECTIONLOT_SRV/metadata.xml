@@ -1,0 +1,1210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="API_INSPECTIONLOT_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="A_InspectionCharacteristicType" sap:label="Inspection Characteristics" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                    <PropertyRef Name="InspPlanOperationInternalID"/>
+                    <PropertyRef Name="InspectionCharacteristic"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspPlanOperationInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Current Node No." sap:quickinfo="Current Node Number from Order Counter"/>
+                <Property Name="InspectionCharacteristic" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Insp. Characteristic" sap:quickinfo="Inspection Characteristic Number"/>
+                <Property Name="InspectionSpecificationText" Type="Edm.String" MaxLength="40" sap:label="Characteristic Short Text" sap:quickinfo="Short Text for Inspection Characteristic"/>
+                <Property Name="HasInspCharcPrtlSmpl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Partial Samples" sap:quickinfo="Partial Samples Possible"/>
+                <Property Name="InspSpecIsQuantitative" Type="Edm.Boolean" sap:label="Is Quantitative Characteristic"/>
+                <Property Name="InspSpecIsMeasuredValueRqd" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Record Measured Vals" sap:quickinfo="Measured Values Must Be Recorded"/>
+                <Property Name="InspSpecIsSelectedSetRequired" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Charc Attribute" sap:quickinfo="Reference to Characteristic Attribute Required"/>
+                <Property Name="InspSpecIsLongTermInspection" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Long-Term Inspection"/>
+                <Property Name="InspSpecRecordingType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Recording Type"/>
+                <Property Name="InspResultIsDocumentationRqd" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Document Results" sap:quickinfo="Documentation Required for Inspection Results"/>
+                <Property Name="InspSpecCharcCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Charac. category" sap:quickinfo="Characteristic Category"/>
+                <Property Name="InspSpecResultCalculation" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Calculated Charc" sap:quickinfo="Calculated Characteristic"/>
+                <Property Name="InspCharcIsNotPlanned" Type="Edm.Boolean" sap:label="Unplanned Characteristic"/>
+                <Property Name="InspectionMethod" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Inspection Method"/>
+                <Property Name="InspectionMethodPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant for Inspection Method"/>
+                <Property Name="InspectionMethodVersion" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Version" sap:quickinfo="Version Number of Inspection Method"/>
+                <Property Name="InspectionSpecificationPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant for Master Characteristic" sap:quickinfo="Plant for Master Inspection Characteristic"/>
+                <Property Name="InspectionSpecification" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Master Insp. Charac." sap:quickinfo="Master Inspection Characteristic"/>
+                <Property Name="InspectionSpecificationVersion" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Version" sap:quickinfo="Version Number of Master Inspection Characteristic"/>
+                <Property Name="InspectionCharacteristicStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Specification status" sap:quickinfo="Specification Record Status"/>
+                <Property Name="InspSpecDecimalPlaces" Type="Edm.Byte" sap:label="Decimal Places" sap:quickinfo="Number of Places to the Right of a Decimal Point (Accuracy)"/>
+                <Property Name="InspectionSpecificationUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:quickinfo="Unit of Measurement in Which Quantitative Data Is Stored" sap:semantics="unit-of-measure"/>
+                <Property Name="InspSampleValuationRule" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Valuation rule" sap:quickinfo="Valuation Rule"/>
+                <Property Name="QuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Sample Unit of Meas." sap:quickinfo="Sample Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="InspCharacteristicSampleSize" Type="Edm.Int32" sap:label="Inspect" sap:quickinfo="Sample Size that Has to Be Inspected for a Characteristic"/>
+                <Property Name="InspCharacteristicSampleUnit" Type="Edm.String" MaxLength="3" sap:label="Sample Unit of Meas." sap:quickinfo="Sample Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="InspSpecSampleQuantityFactor" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Base Sample Quantity" sap:quickinfo="Sample Quantity Factor for Sample(Mult. Sample Unit of Msr.)"/>
+                <Property Name="InspSpecTargetValue" Type="Edm.Double" sap:unit="InspectionSpecificationUnit" sap:label="Target Value" sap:quickinfo="Target Value for a Quantitative Characteristic"/>
+                <Property Name="InspSpecFrmtdTargetValue" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Target Value" sap:quickinfo="Target Value for Quantitative Characteristic (Formatted)"/>
+                <Property Name="InspSpecHasTargetValue" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Not Initial" sap:quickinfo="Value Not Initial If Set"/>
+                <Property Name="InspSpecUpperLimit" Type="Edm.Double" sap:unit="InspectionSpecificationUnit" sap:label="Upper Specif. Limit" sap:quickinfo="Upper Specification Limit"/>
+                <Property Name="InspSpecFrmtdUpperLimit" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Upper Specif. Limit" sap:quickinfo="Upper Specification Limit (Formatted)"/>
+                <Property Name="InspSpecHasUpperLimit" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Not Initial" sap:quickinfo="Value Not Initial If Set"/>
+                <Property Name="InspSpecLowerLimit" Type="Edm.Double" sap:unit="InspectionSpecificationUnit" sap:label="Lower Specif. Limit" sap:quickinfo="Lower Specification Limit"/>
+                <Property Name="InspSpecFrmtdLowerLimit" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Lower Specif. Limit" sap:quickinfo="Lower Specification Limit (Formatted)"/>
+                <Property Name="InspSpecHasLowerLimit" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Not Initial" sap:quickinfo="Value Not Initial If Set"/>
+                <Property Name="InspSpecImportanceCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Weighting of Charc" sap:quickinfo="Weighting of Characteristic"/>
+                <Property Name="InspLotTestEquipInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Test equipment" sap:quickinfo="Assigned Test Equipment"/>
+                <Property Name="SelectedCodeSet" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code group/sel. set" sap:quickinfo="Assigned Code Group or Selected Set"/>
+                <Property Name="SelectedCodeSetPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:quickinfo="Plant of the Assigned Selected Set"/>
+                <Property Name="InspectorQualification" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Inspector Qualific." sap:quickinfo="Inspector Qualification"/>
+                <Property Name="InspSpecInformationField1" Type="Edm.String" MaxLength="10" sap:label="Info Field 1" sap:quickinfo="Text Line for Additional Information"/>
+                <Property Name="InspSpecInformationField2" Type="Edm.String" MaxLength="20" sap:label="Info Field 2" sap:quickinfo="Text Line for Additional Information"/>
+                <Property Name="InspSpecInformationField3" Type="Edm.String" MaxLength="40" sap:label="Info Field 3" sap:quickinfo="Text Line for Additional Information"/>
+                <Property Name="InspectionScope" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Inspection Quantity" sap:quickinfo="Quantity to Be Inspected"/>
+                <Property Name="InspCharcQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="QuantityUnit" sap:label="Inspection Quantity" sap:quickinfo="Quantity to Be Inspected"/>
+                <Property Name="InspSpecControlIndicators" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Char. control ind." sap:quickinfo="Cntrl Indicator String for Insp. Char./Master Insp. Char."/>
+                <Property Name="CharacteristicAttributeCatalog" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="UnplndCharcInspSubsetIntID" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="SmpNo UCh" sap:quickinfo="Unplanned Characteristic Was Created with this Sample No."/>
+                <Property Name="InspLotDynamicRule" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Dynamic Modification Rule"/>
+                <Property Name="InspCharcConfirmationNumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Confirmation Number" sap:quickinfo="Confirmation Number for Inspection Characteristic" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset" Precision="0" ConcurrencyMode="Fixed" sap:label="Short Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <NavigationProperty Name="to_InspResultValue" Relationship="API_INSPECTIONLOT_SRV.assoc_37B239FAFA5558593504588E89D2F137" FromRole="FromRole_assoc_37B239FAFA5558593504588E89D2F137" ToRole="ToRole_assoc_37B239FAFA5558593504588E89D2F137"/>
+                <NavigationProperty Name="to_InspSmplResult" Relationship="API_INSPECTIONLOT_SRV.assoc_DE70EA7074ABA25BC6227B746DCC7BED" FromRole="FromRole_assoc_DE70EA7074ABA25BC6227B746DCC7BED" ToRole="ToRole_assoc_DE70EA7074ABA25BC6227B746DCC7BED"/>
+            </EntityType>
+            <EntityType Name="A_InspectionLotType" sap:label="Inspection Lot Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Batch" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch" sap:quickinfo="Batch Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="InspectionLotOrigin" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Inspection Lot Origin"/>
+                <Property Name="OrderInternalBillOfOperations" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn Task List No." sap:quickinfo="Routing Number of Operations in the Order"/>
+                <Property Name="ManufacturingOrder" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Production Order" sap:quickinfo="Order Number (Production Order)"/>
+                <Property Name="InspectionLotText" Type="Edm.String" MaxLength="40" sap:label="Inspection Lot Text"/>
+                <Property Name="InspectionLotType" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Inspection Type"/>
+                <Property Name="InspectionLotQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Inspection Lot Quantity"/>
+                <Property Name="InspectionLotActualQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Actual Lot Quantity"/>
+                <Property Name="InspectionLotDefectiveQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Defective Quantity"/>
+                <Property Name="InspectionLotQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:quickinfo="Base Unit of Measure for Inspection Lot Quantity" sap:semantics="unit-of-measure"/>
+                <Property Name="InspLotCreatedOnLocalDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Lot Created" sap:quickinfo="Date in Time Zone Where Lot Created"/>
+                <Property Name="InspSubsetFieldCombination" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="User Field Combinat." sap:quickinfo="Identifier for Inspection Point Field Combination"/>
+                <Property Name="InspLotNmbrOpenLongTermCharc" Type="Edm.Int16" sap:label="Open Long-Term Characteristics"/>
+                <Property Name="StatusObject" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object Number"/>
+                <Property Name="StatusObjectCategory" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Object Category"/>
+                <Property Name="InspectionLotObjectText" Type="Edm.String" MaxLength="40" sap:label="Object Short Text" sap:quickinfo="Short Text for Inspection Object"/>
+                <Property Name="StatusProfile" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Status Profile"/>
+                <Property Name="MatlQualityAuthorizationGroup" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="QM Material Authorization" sap:quickinfo="Material Authorization Group for Activities in QM"/>
+                <Property Name="InspectionLotHasQuantity" Type="Edm.Boolean" sap:label="Posted to Inspection Stock"/>
+                <Property Name="InspLotIsCreatedAutomatically" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Insp. Lot Created" sap:quickinfo="Inspection Lot Is Created Automatically"/>
+                <Property Name="InspectionLotHasPartialLots" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Partial Lots Exist"/>
+                <Property Name="InspectionLotHasAppraisalCosts" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Individual QM Order" sap:quickinfo="Record Appraisal Costs in Individual QM Order"/>
+                <Property Name="InspLotHasSubsets" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Insp. with Insp. Pts" sap:quickinfo="Inspection with Inspection Points"/>
+                <Property Name="InspLotIsAutomUsgeDcsnPossible" Type="Edm.Boolean" sap:label="Automatic Usage Decision Planned"/>
+                <Property Name="PurchasingDocumentCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Source inspection" sap:quickinfo="Source Inspection"/>
+                <Property Name="InspLotHasConfignSpecification" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Insp. by Configuratn" sap:quickinfo="Inspection Specifications from Configuration"/>
+                <Property Name="GoodsReceiptIsMovedToBlkdStock" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="GR Blocked Stock"/>
+                <Property Name="InspLotIsDocumentationRequired" Type="Edm.Boolean" sap:label="Documentation Required"/>
+                <Property Name="InspLotIsTaskListRequired" Type="Edm.Boolean" sap:label="Inspection Plan Required"/>
+                <Property Name="InspLotHasManualSampleSize" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Manual sample" sap:quickinfo="Enter Sample Manually"/>
+                <Property Name="InspLotHasMaterialSpec" Type="Edm.Boolean" sap:label="Inspect with Material Specification"/>
+                <Property Name="InspectionLotApproval" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Inspection Lot Approval"/>
+                <Property Name="InspLotDigitalSgntrResultsRecg" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Dig. Sig. in RR" sap:quickinfo="Digital Signature for Insp. Lot in Results Recording"/>
+                <Property Name="InspLotDigitalSgntrInUsgeDcsn" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Digital Signature Usage Decision"/>
+                <Property Name="InspLotIsBatchRequired" Type="Edm.Boolean" sap:label="Appr.Batch Recd Req." sap:quickinfo="Approved Batch Record Required"/>
+                <Property Name="InspLotUsageInStabilityStudy" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Insp. Lot Stab." sap:quickinfo="Inspection Lot for Stability Study"/>
+                <Property Name="InspLotIsStockPostingCompleted" Type="Edm.Boolean" sap:label="Stock Postings Completed"/>
+                <Property Name="InspectionLotHasUsageDecision" Type="Edm.Boolean" sap:label="Usage Decision Made"/>
+                <Property Name="NumberOfSerialNumbers" Type="Edm.Int32" sap:label="No.serial numbers" sap:quickinfo="Number of serial numbers"/>
+                <Property Name="InspLotIsSerialNmbrPossible" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Serial Numbers Poss." sap:quickinfo="Serial Numbers Possible for Inspection Lot"/>
+                <Property Name="InspectionLotIsSkipped" Type="Edm.Boolean" sap:label="Skip Lot"/>
+                <Property Name="InspectionLotIsFullInspection" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="100% Inspection"/>
+                <Property Name="InspectionLotDynamicLevel" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Dynamic Modification Level" sap:quickinfo="Level at Which Dynamic Modification Parameters Are Defined"/>
+                <Property Name="SamplingProcedure" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Sampling Procedure"/>
+                <Property Name="InspLotCreatedOnLocalTime" Type="Edm.Time" Precision="0" sap:label="Created At (Local Time)" sap:quickinfo="Time in Time Zone Where Lot Created"/>
+                <Property Name="InspectionLotCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of User Who Created the Data Record"/>
+                <Property Name="InspectionLotCreatedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="System Date on Which Data Record Was Created"/>
+                <Property Name="InspectionLotCreatedOnTime" Type="Edm.Time" Precision="0" sap:label="Created At" sap:quickinfo="System Time of Creation"/>
+                <Property Name="InspectionLotChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of User Who Last Changed Data Record"/>
+                <Property Name="InspectionLotChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="System Date on Which Data Record Was Changed"/>
+                <Property Name="InspectionLotChangeTime" Type="Edm.Time" Precision="0" sap:label="Changed At" sap:quickinfo="System Time of Change"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset" Precision="0" ConcurrencyMode="Fixed" sap:label="Short Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="InspectionLotStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start of Inspection" sap:quickinfo="Start Date of Inspection in Local Time Zone"/>
+                <Property Name="InspectionLotStartTime" Type="Edm.Time" Precision="0" sap:label="Inspection Started At"/>
+                <Property Name="InspectionLotEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End of Inspection" sap:quickinfo="End Date of Inspection in Local Time Zone"/>
+                <Property Name="InspectionLotEndTime" Type="Edm.Time" Precision="0" sap:label="Inspection Ended At"/>
+                <Property Name="BillOfOperationsType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Bill of Operations Type"/>
+                <Property Name="BillOfOperationsGroup" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Bill of Operations Group"/>
+                <Property Name="BillOfOperationsUsage" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Bill of Operations Usage"/>
+                <Property Name="BillOfOperationsVariant" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Bill of Operations Group Counter"/>
+                <Property Name="BillOfOperationsChangeStateID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Internal counter"/>
+                <Property Name="InspectionSubsetType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Inspection Point Type"/>
+                <Property Name="SmplDrawingProcedure" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Sample-Drawing Procedure"/>
+                <Property Name="SmplDrawingProcedureVersion" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Version" sap:quickinfo="Version No. of the Sample-Drawing Procedure"/>
+                <Property Name="SmplDrwgProcedIsConfRequired" Type="Edm.Boolean" sap:label="Confirmation Required" sap:quickinfo="Confirmation Required for Sample Drawing"/>
+                <Property Name="InspLotSelectionMaterial" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="InspLotSelMatlRevisionLvl" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Revision Level"/>
+                <Property Name="InspLotSelectionPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="InspLotSelectionSupplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Supplier's Account Number"/>
+                <Property Name="InspLotSelectionManufacturer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Manufacturer" sap:quickinfo="Number of Manufacturer"/>
+                <Property Name="InspLotSelectionCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Account number of customer"/>
+                <Property Name="InspLotSelBillOfOperationsUsge" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Usage" sap:quickinfo="Task List Usage"/>
+                <Property Name="InspLotSelectionValidFromDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Key Date" sap:quickinfo="Key Date for Selecting Records or Changing Task Lists"/>
+                <Property Name="ProductionVersion" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Production Version"/>
+                <Property Name="SalesOperationsPlanningOrder" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Run Schedule Header"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer (Ship-to Party)"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Supplier's Account Number"/>
+                <Property Name="BatchBySupplier" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Supplier Batch" sap:quickinfo="Supplier Batch Number"/>
+                <Property Name="Manufacturer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Manufacturer" sap:quickinfo="Number of Manufacturer"/>
+                <Property Name="ManufacturerPartNmbr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Manufacturer Material"/>
+                <Property Name="MaterialRevisionLevel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Revision Level"/>
+                <Property Name="MaterialIsBatchManaged" Type="Edm.Boolean" sap:label="Batch Required"/>
+                <Property Name="BatchStorageLocation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location for Batch"/>
+                <Property Name="MaterialCompIsSpecialStock" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Special Stock" sap:quickinfo="Special Stock Indicator"/>
+                <Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purchasing Organization"/>
+                <Property Name="PurchasingDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document"/>
+                <Property Name="PurchasingDocumentItem" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Purchasing Document Item"/>
+                <Property Name="ScheduleLine" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Schedule Line" sap:quickinfo="Delivery Schedule Line Counter"/>
+                <Property Name="AccountingDocumentType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Type"/>
+                <Property Name="MaterialDocumentYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Document Year"/>
+                <Property Name="MaterialDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Material Document" sap:quickinfo="Number of Material Document"/>
+                <Property Name="MaterialDocumentItem" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Document Item"/>
+                <Property Name="MatlDocLatestPostgDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date" sap:quickinfo="Posting Date in the Document"/>
+                <Property Name="GoodsMovementType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Movement Type" sap:quickinfo="Movement Type (Inventory Management)"/>
+                <Property Name="InspectionLotPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant for Inspection Lot"/>
+                <Property Name="InspectionLotStorageLocation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Loc. for Inspection Lot Stock" sap:quickinfo="Storage Location for Inspection Lot Stock"/>
+                <Property Name="Warehouse" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Warehouse Number" sap:quickinfo="Warehouse Number / Warehouse Complex"/>
+                <Property Name="StorageType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Storage Type"/>
+                <Property Name="StorageBin" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Storage Bin"/>
+                <Property Name="SalesOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order" sap:quickinfo="Sales Order Number"/>
+                <Property Name="SalesOrderItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales Order Item"/>
+                <Property Name="DeliveryDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery Document"/>
+                <Property Name="DeliveryDocumentItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Delivery Document Item"/>
+                <Property Name="DeliveryCategory" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Delivery category" sap:quickinfo="Delivery Category"/>
+                <Property Name="InspectionDeliveryCategory" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Delivery category" sap:quickinfo="Delivery Category"/>
+                <Property Name="Route" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Route"/>
+                <Property Name="BillToPartyCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Dest. Country/Region" sap:quickinfo="Destination Country/Region"/>
+                <Property Name="SoldToParty" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer (Sold-to Party)"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="MaterialByCustomer" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Customer Material"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="InspLotNmbrAddlRecordedCharc" Type="Edm.Int16" sap:label="Charcs Recorded" sap:quickinfo="Number of Characteristics Recorded Additionally"/>
+                <Property Name="InspLotNmbrOpenShortTermCharc" Type="Edm.Int16" sap:label="Short-Term Charcs" sap:quickinfo="Number of Outstanding Short-Term Chars That Require Confirm."/>
+                <Property Name="InspectionLotContainer" Type="Edm.Decimal" Precision="6" Scale="3" sap:unit="InspectionLotContainerUnit" sap:label="Number of Containers" sap:quickinfo="QM - No. of Containers"/>
+                <Property Name="InspectionLotContainerUnit" Type="Edm.String" MaxLength="3" sap:label="Lot Container" sap:semantics="unit-of-measure"/>
+                <Property Name="InspectionLotSampleQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotSampleUnit" sap:label="Sample Size" sap:quickinfo="Inspection Sample Size"/>
+                <Property Name="InspectionLotSampleUnit" Type="Edm.String" MaxLength="3" sap:label="Sample Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="InspLotDynamicRule" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Dynamic Modification Rule"/>
+                <Property Name="InspLotDynamicTrggrPoint" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Time of dyn. modif." sap:quickinfo="Time of Dynamic Modification in Inspection Lot"/>
+                <Property Name="InspectionDynamicStage" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Inspection Stage"/>
+                <Property Name="InspectionSeverity" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Inspection Severity"/>
+                <Property Name="InspLotQtyToFree" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Unrestricted-Use Stock"/>
+                <Property Name="InspLotQtyToScrap" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Scrap Quantity"/>
+                <Property Name="InspLotQtyToSample" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Sample" sap:quickinfo="Quantity Posted to Sample"/>
+                <Property Name="InspLotQtyToBlocked" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Blocked Stock"/>
+                <Property Name="InspLotQtyToReserves" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Reserves" sap:quickinfo="Quantity Posted to Reserves"/>
+                <Property Name="InspLotQtyToAnotherMaterial" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="New Material"/>
+                <Property Name="InspLotMaterialPostedTo" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material Posted To"/>
+                <Property Name="InspLotBatchTransferredTo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch Transferred To"/>
+                <Property Name="InspLotQtyReturnedToSupplier" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Return to Supplier"/>
+                <Property Name="InspLotQtyToSpecialStock" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Other Quantity"/>
+                <Property Name="InspLotQtyToOtherStock" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Other Quantity 2"/>
+                <Property Name="InspLotQtyToBePosted" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotQuantityUnit" sap:label="Quantity to Be Posted"/>
+                <Property Name="InspLotSmplQtyForLongTermChar" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotSampleUnit" sap:label="Long-Term Sample Quantity"/>
+                <Property Name="InspLotQtyInspected" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotSampleUnit" sap:label="Inspected Quantity"/>
+                <Property Name="InspLotQtyDestroyed" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionLotSampleUnit" sap:label="Destroyed Quantity"/>
+                <Property Name="InspectionLotScrapRatio" Type="Edm.Double" sap:label="Share of Scrap" sap:quickinfo="Share of Scrap in Inspection Lot"/>
+                <Property Name="InspLotUsageDecisionTool" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="UD Mode" sap:quickinfo="Usage Decision Mode (UD Origin)"/>
+                <Property Name="InspectionLotAllowedScrapRatio" Type="Edm.Double" sap:label="Allowed Scrap Share" sap:quickinfo="Allowed Share of Scrap"/>
+                <Property Name="QualityCostCollector" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="QM Order" sap:quickinfo="Order Number for Recording Appraisal Costs"/>
+                <Property Name="ConsumptionPosting" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Consumption" sap:quickinfo="Consumption posting"/>
+                <Property Name="AccountAssignmentCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Acct Assignment Cat." sap:quickinfo="Account Assignment Category"/>
+                <Property Name="PurchasingDocumentItemCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Item Category" sap:quickinfo="Item category in purchasing document"/>
+                <Property Name="InspLotAcctAssgmtKey" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Account Assgmt Key" sap:quickinfo="Account Assignment Key: Inspection Lot"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/>
+                <Property Name="ReservationItem" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Item no." sap:quickinfo="Item Number of Reservation / Dependent Requirements"/>
+                <Property Name="MasterFixedAsset" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Asset" sap:quickinfo="Main Asset Number"/>
+                <Property Name="FixedAsset" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Subnumber" sap:quickinfo="Asset Subnumber"/>
+                <Property Name="SalesOrdStockWBSElement" Type="Edm.String" MaxLength="24" sap:display-format="NonNegative" sap:label="WBS Element" sap:quickinfo="Valuated Sales Order Stock WBS Element"/>
+                <Property Name="ProjectNetwork" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Network" sap:quickinfo="Network Number for Account Assignment"/>
+                <Property Name="NetworkActivityInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Internal counter"/>
+                <Property Name="InventorySpclStkSalesDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Inventory Special Stock Sales Document"/>
+                <Property Name="InventorySpclStkSalesDocItm" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales order item" sap:quickinfo="Sales Order Item of Valuated Sales Order Stock"/>
+                <Property Name="ProfitabilitySegment" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profitability Segment"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center"/>
+                <Property Name="BusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Area"/>
+                <Property Name="GLAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="G/L Account" sap:quickinfo="G/L Account Number"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="SerialNumberProfile" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Serial No. Profile" sap:quickinfo="Serial Number Profile"/>
+                <Property Name="InspLotCostCollectorSalesOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order" sap:quickinfo="Sales Order Number"/>
+                <Property Name="InspLotCostCollectorSlsOrdItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales Order Item" sap:quickinfo="Item Number in Sales Order"/>
+                <Property Name="InspLotCostCollectorWBSElement" Type="Edm.String" MaxLength="24" sap:display-format="NonNegative" sap:label="WBS Element" sap:quickinfo="Work Breakdown Structure Element (WBS Element)"/>
+                <Property Name="InspLotExternalNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Inspection Document Number"/>
+                <Property Name="InspectionLotPriorityPoints" Type="Edm.Int32" sap:label="Priority Points"/>
+                <Property Name="MaintenancePlan" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Maintenance Plan"/>
+                <Property Name="MaintenancePlanItemIntID" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Maintenance Item"/>
+                <Property Name="MaintenanceStrategy" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Maintenance Strategy"/>
+                <NavigationProperty Name="to_InspectionLotWithStatus" Relationship="API_INSPECTIONLOT_SRV.assoc_9E6C23E6EE857B6A5C1543120D0F85EA" FromRole="FromRole_assoc_9E6C23E6EE857B6A5C1543120D0F85EA" ToRole="ToRole_assoc_9E6C23E6EE857B6A5C1543120D0F85EA"/>
+            </EntityType>
+            <EntityType Name="A_InspectionLotWithStatusType" sap:label="Inspection Lot Statuses" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspectionLotStatusCreated" Type="Edm.String" MaxLength="1"/>
+                <Property Name="InspectionLotStatusReleased" Type="Edm.String" MaxLength="1"/>
+                <Property Name="InspectionLotStatusSkip" Type="Edm.String" MaxLength="1"/>
+                <Property Name="InspLotStatusRsltsConfirmed" Type="Edm.String" MaxLength="1"/>
+                <Property Name="InspLotStsDefectsRecorded" Type="Edm.String" MaxLength="1"/>
+                <Property Name="InspLotStsShrtTrmInspCmpltd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="InspLotStatusInspCompleted" Type="Edm.String" MaxLength="1"/>
+                <Property Name="InspLotStatusCanceled" Type="Edm.String" MaxLength="1"/>
+                <Property Name="InspLotStatusRepair" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="A_InspectionOperationType" sap:label="Inspection Operations" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                    <PropertyRef Name="InspPlanOperationInternalID"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspPlanOperationInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Current Node No." sap:quickinfo="Current Node Number from Order Counter"/>
+                <Property Name="OrderInternalBillOfOperations" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn Task List No." sap:quickinfo="Routing Number of Operations in the Order"/>
+                <Property Name="InspectionOperation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Activity" sap:quickinfo="Activity Number"/>
+                <Property Name="InspectionOperationPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="BillOfOperationsType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Task List Type"/>
+                <Property Name="BOOOperationInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Task List Node" sap:quickinfo="Number of the Task List Node"/>
+                <Property Name="WorkCenterInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Object ID" sap:quickinfo="Object ID of the resource"/>
+                <Property Name="StatusObject" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object Number"/>
+                <Property Name="OperationControlProfile" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Control Key"/>
+                <Property Name="OperationConfirmation" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Confirmation" sap:quickinfo="Completion confirmation number for the operation"/>
+                <Property Name="InspectionSubSystem" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="QDR System" sap:quickinfo="Subsystem Identifier for QM Subsystem Interface"/>
+                <Property Name="OperationText" Type="Edm.String" MaxLength="40" sap:label="Operation Short Text"/>
+            </EntityType>
+            <EntityType Name="A_InspectionResultType" sap:label="Summarized Inspection Results" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                    <PropertyRef Name="InspPlanOperationInternalID"/>
+                    <PropertyRef Name="InspectionCharacteristic"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspPlanOperationInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Current Node No." sap:quickinfo="Current Node Number from Order Counter"/>
+                <Property Name="InspectionCharacteristic" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Insp. Characteristic" sap:quickinfo="Inspection Characteristic Number"/>
+                <Property Name="InspectionResultStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Results Record Status"/>
+                <Property Name="InspectionResultAttribute" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Attribute" sap:quickinfo="Attribute of Results Record (Valid, Invalid,...)"/>
+                <Property Name="InspectionResultOrigin" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Data Origin" sap:quickinfo="Origin of Results Data"/>
+                <Property Name="Inspector" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Inspector" sap:quickinfo="Name of Inspector"/>
+                <Property Name="InspectionValuationResult" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Valuation" sap:quickinfo="Inspection Result Valuation"/>
+                <Property Name="InspectionResultMeanValue" Type="Edm.Double" sap:label="Mean Value" sap:quickinfo="Arithmetic Mean of Valid Measured Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspResultFrmtdMeanValue" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Mean Value" sap:quickinfo="Arithmetic Mean of Valid Measured Values (Formatted)"/>
+                <Property Name="InspectionResultHasMeanValue" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Not Initial" sap:quickinfo="Value Not Initial If Set" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionResultMaximumValue" Type="Edm.Double" sap:label="Maximum Valid Value" sap:quickinfo="Maximum Value of Valid Measured Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspResultFrmtdMaximumValue" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Maximum Valid Value" sap:quickinfo="Maximum Value of Valid Measured Values - formatted"/>
+                <Property Name="InspResultHasMaximumValue" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Not Initial" sap:quickinfo="Value Not Initial If Set" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionResultMinimumValue" Type="Edm.Double" sap:label="Minimum Valid Value" sap:quickinfo="Minimum Value of Valid Measured Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspResultFrmtdMinimumValue" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Minimum Valid Value" sap:quickinfo="Minimum Value of Valid Measured Values (Formatted)"/>
+                <Property Name="InspResultHasMinimumValue" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Not Initial" sap:quickinfo="Value Not Initial If Set" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionResultOriginalValue" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Original Value" sap:quickinfo="Original Value Before Input Processing"/>
+                <Property Name="InspResultValidValuesNumber" Type="Edm.Int32" sap:label="Inspected" sap:quickinfo="Number of Inspected Sample Units"/>
+                <Property Name="InspectionResultText" Type="Edm.String" MaxLength="40" sap:label="Inspection Desc. for Summarized Result" sap:quickinfo="Inspection Description for Summarized Result"/>
+                <Property Name="InspectionResultHasLongText" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Long text" sap:quickinfo="Inspection Characteristic Long Text Exists"/>
+                <Property Name="CharacteristicAttributeCatalog" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="CharacteristicAttributeCodeGrp" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="CharacteristicAttributeCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspRsltFreeDefinedTestEquip" Type="Edm.String" MaxLength="18" sap:label="Additional Info." sap:quickinfo="General Information"/>
+                <Property Name="InspRsltBelowToleranceValsNmbr" Type="Edm.Int32" sap:label="Number Below" sap:quickinfo="Number of Measured Values Below Tolerance Range"/>
+                <Property Name="InspRsltAboveToleranceValsNmbr" Type="Edm.Int32" sap:label="Number Above" sap:quickinfo="Number of Measured Values Above Tolerance Range"/>
+                <Property Name="InspRsltNonconformingValsNmbr" Type="Edm.Int32" sap:label="Nonconforming" sap:quickinfo="Number of Nonconforming Sample Units"/>
+                <Property Name="InspectionNumberOfDefects" Type="Edm.Int32" sap:label="Number of Defects" sap:quickinfo="Number of Defects Found"/>
+                <Property Name="DefectClass" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Defect Class" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspRsltAboveToleranceFraction" Type="Edm.Double" sap:label="Fraction Above" sap:quickinfo="Estimated Fraction Above Tolerance Range" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspRsltFrmtdAbvTolFraction" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Fraction Above" sap:quickinfo="Estimated Fraction Above Tolerance Range (Formatted)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspRsltBelowToleranceFraction" Type="Edm.Double" sap:label="Fraction Below" sap:quickinfo="Estimated Fraction Below Tolerance Range" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspRsltFrmtdBelowTolFraction" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Fraction Below" sap:quickinfo="Estimated Fraction Below Tolerance Range (Formatted)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspResultVariance" Type="Edm.Double" sap:label="Variance" sap:quickinfo="Dispersion (Variance) of Valid Measured Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspResultFrmtdVariance" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Variance" sap:quickinfo="Dispersion (Variance) of Valid Measured Values (Formatted)"/>
+                <Property Name="InspectionResultCatalog2" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="InspectionResultCatalog3" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="InspectionResultCatalog4" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="InspectionResultCatalog5" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="InspectionResultCode2" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode3" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode4" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode5" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCodeGroup2" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup3" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup4" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup5" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionPartialSampleSize" Type="Edm.Int16" sap:label="Partial Samples" sap:quickinfo="Number of Partial Samples for Characteristic"/>
+                <Property Name="InspectionStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Insp. Start Date" sap:quickinfo="Start Date in Local Time Zone of Inspection"/>
+                <Property Name="InspectionStartTime" Type="Edm.Time" Precision="0" sap:label="Insp. Start Time" sap:quickinfo="Start Time in Local Time Zone of Inspection"/>
+                <Property Name="InspectionEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Inspection End Date"/>
+                <Property Name="InspectionEndTime" Type="Edm.Time" Precision="0" sap:label="Inspection End Time" sap:quickinfo="End Time in Local Time Zone of Inspection"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of User Who Created the Data Record" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="System Date on Which Data Record Was Created" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of User Who Last Changed Data Record" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="System Date on Which Data Record Was Changed" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset" Precision="0" ConcurrencyMode="Fixed" sap:label="Short Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="A_InspectionResultValueType" sap:label="Single Inspection Results" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                    <PropertyRef Name="InspPlanOperationInternalID"/>
+                    <PropertyRef Name="InspectionCharacteristic"/>
+                    <PropertyRef Name="InspResultValueInternalID"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspPlanOperationInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Current Node No." sap:quickinfo="Current Node Number from Order Counter"/>
+                <Property Name="InspectionCharacteristic" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Insp. Characteristic" sap:quickinfo="Inspection Characteristic Number"/>
+                <Property Name="InspResultValueInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Individual Result" sap:quickinfo="Number of Individual Result"/>
+                <Property Name="InspectionResultAttribute" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Attribute" sap:quickinfo="Attribute of Results Record (Valid, Invalid,...)"/>
+                <Property Name="InspResultItemInternalID" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Inspection Unit No." sap:quickinfo="Counter for Inspection Unit Number"/>
+                <Property Name="InspectionSubsetInternalID" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Sample Number" sap:quickinfo="Inspection Sample Number"/>
+                <Property Name="InspectionResultMeasuredValue" Type="Edm.Double" sap:label="Measured Value" sap:quickinfo="Measured Value for a Sample Unit" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspResultFrmtdMeasuredValue" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Measured Value" sap:quickinfo="Measured Value for a Sample Unit - formatted"/>
+                <Property Name="InspResultHasMeasuredValue" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="MeasVal. Not Initial" sap:quickinfo="Measured Value Is Not Initial" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionResultOriginalValue" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Original Value" sap:quickinfo="Original Value Before Input Processing"/>
+                <Property Name="InspectionNumberOfDefects" Type="Edm.Byte" sap:label="Number of defects" sap:quickinfo="Number of Defects Found"/>
+                <Property Name="DefectClass" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Defect Class" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionResultText" Type="Edm.String" MaxLength="40" sap:label="Inspection Description for Single Value"/>
+                <Property Name="InspLotSingleUnitNumber" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Single Unit Number" sap:quickinfo="Number of Single Unit in Inspection Lot"/>
+                <Property Name="InspectionResultItem" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Serial Number" sap:quickinfo="Single-Unit Number for the Unit to Be Inspected"/>
+                <Property Name="InspRsltFreeDefinedTestEquip" Type="Edm.String" MaxLength="18" sap:label="Additional Info." sap:quickinfo="General Information"/>
+                <Property Name="InspectionValuationResult" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Valuation" sap:quickinfo="Inspection Result Valuation"/>
+                <Property Name="CharacteristicAttributeCodeGrp" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup2" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup3" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup4" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup5" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="CharacteristicAttributeCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode2" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode3" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode4" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode5" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="CharacteristicAttributeCatalog" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionResultCatalog2" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionResultCatalog3" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionResultCatalog4" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionResultCatalog5" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Inspector" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Inspector" sap:quickinfo="Name of Inspector"/>
+                <Property Name="InspectionStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Insp. Start Date" sap:quickinfo="Start Date in Local Time Zone of Inspection"/>
+                <Property Name="InspectionStartTime" Type="Edm.Time" Precision="0" sap:label="Insp. Start Time" sap:quickinfo="Start Time in Local Time Zone of Inspection"/>
+                <Property Name="InspectionEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Inspection End Date" sap:quickinfo="End Date in Local Time Zone of Inspection"/>
+                <Property Name="InspectionEndTime" Type="Edm.Time" Precision="0" sap:label="Inspection End Time" sap:quickinfo="End Time in Local Time Zone of Inspection"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="System Date on Which Data Record Was Created" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Time" sap:quickinfo="System Time at Which Data Record Was Created" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of User Who Created the Data Record" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="System Date on Which Data Record Was Changed" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedTime" Type="Edm.Time" Precision="0" sap:label="Time" sap:quickinfo="System Time at Which Data Record Was Changed" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of User Who Last Changed Data Record" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset" Precision="0" ConcurrencyMode="Fixed" sap:label="Short Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="A_InspectionSubsetType" sap:label="Inspection Points" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                    <PropertyRef Name="InspPlanOperationInternalID"/>
+                    <PropertyRef Name="InspectionSubsetInternalID"/>
+                </Key>
+                <Property Name="Trigger_valuation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspPlanOperationInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Current Node No." sap:quickinfo="Current Node Number from Order Counter"/>
+                <Property Name="InspectionSubsetInternalID" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Sample" sap:quickinfo="Sample Number (Based on an Inspection Point)"/>
+                <Property Name="MaterialSample" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Sample" sap:quickinfo="Material Sample Number"/>
+                <Property Name="Equipment" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number"/>
+                <Property Name="FunctionalLocation" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Functional Location"/>
+                <Property Name="ShopFloorItem" Type="Edm.Int64" sap:label="Serial.Mat. ID" sap:quickinfo="ID of Serialized Material"/>
+                <Property Name="SelectedCodeSetPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="SelectedCodeSet" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="UD Selected Set" sap:quickinfo="Selected Set of the Usage Decision"/>
+                <Property Name="InspSubsetUsageDcsnCodeGroup" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="UD Code Group" sap:quickinfo="Code Group of the Usage Decision"/>
+                <Property Name="InspSubsetUsageDcsnCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Usage Decision Code"/>
+                <Property Name="InspSubsetUsageDcsnValuation" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Code Valuation"/>
+                <Property Name="InspectionSubsetTime" Type="Edm.Time" Precision="0" sap:label="User Field for Time"/>
+                <Property Name="InspectionSubsetDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="User Field for Date"/>
+                <Property Name="InspSubsetLongNumericKey" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="User Field for 10 Digits"/>
+                <Property Name="InspSubsetShortNumericKey" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="User Field for 3 Digits"/>
+                <Property Name="InspectionSubsetLongCharKey" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="User Field for 18 Characters"/>
+                <Property Name="InspectionSubsetShortCharKey" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="User Field for 10 Characters"/>
+                <Property Name="InspectionPartialLot" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Partial Lot" sap:quickinfo="Partial Lot Number"/>
+                <Property Name="Inspector" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Inspector" sap:quickinfo="Name of Inspector"/>
+                <Property Name="InspectionSubsetYieldQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionSubsetQtyUnit" sap:label="Insp. Point Yield" sap:quickinfo="Inspection Point Yield"/>
+                <Property Name="InspectionSubsetScrapQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionSubsetQtyUnit" sap:label="Insp. Point Scrap" sap:quickinfo="Scrap for Inspection Point"/>
+                <Property Name="InspectionSubsetReworkQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspectionSubsetQtyUnit" sap:label="Rework Quantity" sap:quickinfo="Rework Quantity for Inspection Point"/>
+                <Property Name="InspectionSubsetQtyUnit" Type="Edm.String" MaxLength="3" sap:label="Insp.Pt UoM" sap:quickinfo="Unit of Measure for Inspection Point" sap:semantics="unit-of-measure"/>
+                <Property Name="InspSbstFuncnlLocProperty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="User Field Active" sap:quickinfo="Field Active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspSbstEquipProperty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="User Field Active" sap:quickinfo="Field Active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspSbstMatlSmplProperty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="User Field Active" sap:quickinfo="Field Active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionSubsetSortKey" Type="Edm.String" MaxLength="70" sap:display-format="UpperCase" sap:label="Inspection Point" sap:quickinfo="Key Field (Sort Field) for Inspection Point" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspSbstDateFldProperty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="User Field Active" sap:quickinfo="Field Active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspSbstLongNmbrFldProperty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="User Field Active" sap:quickinfo="Field Active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspSbstShrtNmbrFldProperty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="User Field Active" sap:quickinfo="Field Active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspSbstLongTxtFldProperty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="User Field Active" sap:quickinfo="Field Active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspSbstTimeFldProperty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="User Field Active" sap:quickinfo="Field Active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspSbstShrtTxtFldProperty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="User Field Active" sap:quickinfo="Field Active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="System Date on Which Data Record Was Created" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Created At" sap:quickinfo="System Time at Which Data Record Was Created" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of Person Who Changed Object" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="System Date on Which Data Record Was Changed" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangeTime" Type="Edm.Time" Precision="0" sap:label="Changed At" sap:quickinfo="System Time at Which Data Record Was Changed" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset" Precision="0" ConcurrencyMode="Fixed" sap:label="Short Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="A_InspLotMatlDocItemType" sap:label="Stock Postings" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                    <PropertyRef Name="InspLotMatlDocItem"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspLotMatlDocItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Internal Counter for DB Objects"/>
+                <Property Name="InspLotQtyPosted" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="InspLotMatlDocItmQtyUnit" sap:label="Qty in unit of entry" sap:quickinfo="Quantity in unit of entry"/>
+                <Property Name="InspLotMatlDocItmQtyUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Entry" sap:quickinfo="Unit of entry" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="UsageDecisionStockType" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Posting proposal UD" sap:quickinfo="Posting Proposal in Usage Decision"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location"/>
+                <Property Name="InspLotMaterialPostedTo" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Transfer Material"/>
+                <Property Name="InspLotBatchTransferredTo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Transfer Batch"/>
+                <Property Name="MaterialDocumentItemText" Type="Edm.String" MaxLength="50" sap:label="Text" sap:quickinfo="Item Text"/>
+                <Property Name="InspLotMatlDocItemType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Reference Type" sap:quickinfo="Type of Reference Between Inspection Lot and Material Doc." sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MaterialDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Material Document" sap:quickinfo="Number of Material Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MaterialDocumentYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Doc. Year" sap:quickinfo="Material Document Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MaterialDocumentItem" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Doc.Item" sap:quickinfo="Item in Material Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Entry Date" sap:quickinfo="Day On Which Accounting Document Was Entered" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset" Precision="0" ConcurrencyMode="Fixed" sap:label="Short Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <NavigationProperty Name="to_InspLotMatlDocItmSrlNmbr" Relationship="API_INSPECTIONLOT_SRV.assoc_F0B9249E748B5549D1ADDF948340FFD7" FromRole="FromRole_assoc_F0B9249E748B5549D1ADDF948340FFD7" ToRole="ToRole_assoc_F0B9249E748B5549D1ADDF948340FFD7"/>
+            </EntityType>
+            <EntityType Name="A_InspLotMatlDocItmSrlNmbrType" sap:label="Serial Numbers for Stock Posting" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                    <PropertyRef Name="InspLotMatlDocItem"/>
+                    <PropertyRef Name="Equipment"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspLotMatlDocItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Internal Counter for DB Objects" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Equipment" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SerialNumber" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Serial Number"/>
+                <Property Name="InspLotMatlDocItemType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Reference Type" sap:quickinfo="Type of Reference Between Inspection Lot and Material Doc." sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="A_InspLotSerialNumberType" sap:label="Serial Numbers of Inspection Lot" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                    <PropertyRef Name="SerialNumber"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="SerialNumber" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Serial Number"/>
+            </EntityType>
+            <EntityType Name="A_InspLotUsageDecisionType" sap:label="Usage Decisions" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspLotUsageDecisionLevel" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Usage Decision Type" sap:quickinfo="Inspection Lot, Partial Lot, Single Unit, Interval"/>
+                <Property Name="InspectionLotQualityScore" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="Quality Score"/>
+                <Property Name="InspLotUsageDecisionCatalog" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog"/>
+                <Property Name="SelectedCodeSetPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="InspLotUsgeDcsnSelectedSet" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="UD Selected Set" sap:quickinfo="Selected Set of the Usage Decision"/>
+                <Property Name="InspLotUsageDecisionCodeGroup" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Usage Decision Code Group"/>
+                <Property Name="InspectionLotUsageDecisionCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Usage Decision Code"/>
+                <Property Name="InspLotUsgeDcsnDynValuation" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="DynMod. valuation" sap:quickinfo="Dynamic Modif. Valuation According to Worst Case Principle"/>
+                <Property Name="InspLotUsageDecisionValuation" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Code Valuation"/>
+                <Property Name="InspLotUsgeDcsnFollowUpAction" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Follow-Up Action"/>
+                <Property Name="InspectionLotUsageDecidedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Usage Decision Made By"/>
+                <Property Name="InspectionLotUsageDecidedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Usage Decision Made On" sap:quickinfo="Date When Usage Decision Was Made"/>
+                <Property Name="InspLotUsageDecisionTime" Type="Edm.Time" Precision="0" sap:label="Usage Decision Made At" sap:quickinfo="Time When Usage Decision Was Made"/>
+                <Property Name="InspLotUsageDecisionChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Usage Decision Changed By"/>
+                <Property Name="InspLotUsageDecisionChangedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Usage Decision Changed On" sap:quickinfo="Date When Usage Decision Was Changed"/>
+                <Property Name="InspLotUsgeDcsnChangedTime" Type="Edm.Time" Precision="0" sap:label="Usage Decision Changed At" sap:quickinfo="Time When Usage Decision Was Changed"/>
+                <Property Name="InspLotUsgeDcsnHasLongText" Type="Edm.Boolean" sap:label="Usage Decision Has Long Text"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset" Precision="0" ConcurrencyMode="Fixed" sap:label="Short Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+            </EntityType>
+            <EntityType Name="A_InspSampleCharacteristicType" sap:label="Inspection Characteristics of Inspection Points" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                    <PropertyRef Name="InspPlanOperationInternalID"/>
+                    <PropertyRef Name="InspectionCharacteristic"/>
+                    <PropertyRef Name="InspectionSubsetInternalID"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspPlanOperationInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Current Node No." sap:quickinfo="Current Node Number from Order Counter"/>
+                <Property Name="InspectionCharacteristic" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Insp. Characteristic" sap:quickinfo="Inspection Characteristic Number"/>
+                <Property Name="InspectionSubsetInternalID" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Sample Number" sap:quickinfo="Inspection Sample Number"/>
+                <Property Name="InspectionCharacteristicStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Specification status" sap:quickinfo="Specification Record Status"/>
+                <Property Name="QualityControlChart" Type="Edm.String" MaxLength="12" sap:display-format="NonNegative" sap:label="Control Chart" sap:quickinfo="Control Chart Number"/>
+                <Property Name="InspSampleAcceptanceNumber" Type="Edm.Int16" sap:label="Acceptance Number"/>
+                <Property Name="InspSampleRejectionNumber" Type="Edm.Int16" sap:label="Rejection no." sap:quickinfo="Rejection Number"/>
+                <Property Name="InspSampleValuationRule" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Valuation rule" sap:quickinfo="Valuation Rule"/>
+                <Property Name="InspectionSampleSize" Type="Edm.Int32" sap:label="Inspect" sap:quickinfo="Sample Size that Must Be Inspected"/>
+                <Property Name="InspLotDynRuleStage" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Inspection Stage"/>
+                <Property Name="InspectionSeverity" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Inspection Severity"/>
+                <Property Name="InspSubsetCharcCreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="System Date on Which Data Record Was Created"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset" Precision="0" ConcurrencyMode="Fixed" sap:label="Short Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="A_InspSampleResultType" sap:label="Summarized Inspection Results for Inspection Point" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                    <PropertyRef Name="InspPlanOperationInternalID"/>
+                    <PropertyRef Name="InspectionCharacteristic"/>
+                    <PropertyRef Name="InspectionSubsetInternalID"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="InspPlanOperationInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Current Node No." sap:quickinfo="Current Node Number from Order Counter"/>
+                <Property Name="InspectionCharacteristic" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Insp. Characteristic" sap:quickinfo="Inspection Characteristic Number"/>
+                <Property Name="InspectionSubsetInternalID" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Partial Sample" sap:quickinfo="Number of Partial Sample"/>
+                <Property Name="Inspector" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Inspector" sap:quickinfo="Name of Inspector"/>
+                <Property Name="InspectionResultStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Results Record Status"/>
+                <Property Name="InspectionResultOrigin" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Data Origin" sap:quickinfo="Origin of Results Data"/>
+                <Property Name="InspectionStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Insp. Start Date" sap:quickinfo="Start Date in Local Time Zone of Inspection"/>
+                <Property Name="InspectionStartTime" Type="Edm.Time" Precision="0" sap:label="Insp. Start Time" sap:quickinfo="Start Time in Local Time Zone of Inspection"/>
+                <Property Name="InspectionEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Inspection End Date" sap:quickinfo="End Date in Local Time Zone of Inspection"/>
+                <Property Name="InspectionEndTime" Type="Edm.Time" Precision="0" sap:label="Inspection End Time" sap:quickinfo="End Time in Local Time Zone of Inspection"/>
+                <Property Name="InspectionResultAttribute" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Attribute" sap:quickinfo="Attribute of Results Record (Valid, Invalid,...)"/>
+                <Property Name="InspectionValuationResult" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Valuation" sap:quickinfo="Inspection Result Valuation"/>
+                <Property Name="InspResultFrmtdMeanValue" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Mean Value" sap:quickinfo="Arithmetic Mean of Valid Measured Values (Formatted)"/>
+                <Property Name="InspectionResultHasMeanValue" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Not Initial" sap:quickinfo="Value Not Initial If Set" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspResultFrmtdMaximumValue" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Maximum Valid Value" sap:quickinfo="Maximum Value of Valid Measured Values - formatted"/>
+                <Property Name="InspResultHasMaximumValue" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Not Initial" sap:quickinfo="Value Not Initial If Set" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspResultFrmtdMinimumValue" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Minimum Valid Value" sap:quickinfo="Minimum Value of Valid Measured Values (Formatted)"/>
+                <Property Name="InspResultHasMinimumValue" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Not Initial" sap:quickinfo="Value Not Initial If Set" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspectionResultOriginalValue" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Original Value" sap:quickinfo="Original Value Before Input Processing"/>
+                <Property Name="InspResultValidValuesNumber" Type="Edm.Int16" sap:label="Inspected" sap:quickinfo="Number of Inspected Sample Units"/>
+                <Property Name="InspResultNmbrOfRecordedRslts" Type="Edm.Int32" sap:label="Recorded" sap:quickinfo="Number of Recorded Sample Units"/>
+                <Property Name="InspectionResultText" Type="Edm.String" MaxLength="40" sap:label="Inspection Description for Sample Result"/>
+                <Property Name="InspectionResultHasLongText" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Long text" sap:quickinfo="Inspection Characteristic Long Text Exists" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspRsltFreeDefinedTestEquip" Type="Edm.String" MaxLength="18" sap:label="Additional Info." sap:quickinfo="General Information"/>
+                <Property Name="InspRsltBelowToleranceValsNmbr" Type="Edm.Int16" sap:label="Number Below" sap:quickinfo="Number of Measured Values Below Tolerance Range"/>
+                <Property Name="InspRsltAboveToleranceValsNmbr" Type="Edm.Int16" sap:label="Number Above" sap:quickinfo="Number of Measured Values Above Tolerance Range"/>
+                <Property Name="InspRsltFrmtdAbvTolFraction" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Fraction Above" sap:quickinfo="Estimated Fraction Above Tolerance Range (Formatted)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspRsltFrmtdBelowTolFraction" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Fraction Below" sap:quickinfo="Estimated Fraction Below Tolerance Range (Formatted)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InspResultFrmtdVariance" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Variance" sap:quickinfo="Dispersion (Variance) of Valid Measured Values (Formatted)"/>
+                <Property Name="InspRsltNonconformingValsNmbr" Type="Edm.Int16" sap:label="Nonconforming" sap:quickinfo="Number of Nonconforming Sample Units"/>
+                <Property Name="InspectionNumberOfDefects" Type="Edm.Int16" sap:label="Number of defects" sap:quickinfo="Number of Defects Found" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CharacteristicAttributeCodeGrp" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup2" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup3" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup4" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="InspectionResultCodeGroup5" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code Group"/>
+                <Property Name="CharacteristicAttributeCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode2" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode3" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode4" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="InspectionResultCode5" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="CharacteristicAttributeCatalog" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="InspectionResultCatalog2" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="InspectionResultCatalog3" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="InspectionResultCatalog4" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="InspectionResultCatalog5" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Catalog Type" sap:quickinfo="Catalog Type of Assigned Code Group or Selected Set"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of User Who Created the Data Record" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="System Date on Which Data Record Was Created" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Time" sap:quickinfo="System Time at Which Data Record Was Created" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of User Who Last Changed Data Record" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="System Date on Which Data Record Was Changed" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset" Precision="0" ConcurrencyMode="Fixed" sap:label="Short Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedTime" Type="Edm.Time" Precision="0" sap:label="Time" sap:quickinfo="System Time at Which Data Record Was Changed" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <Association Name="assoc_DE70EA7074ABA25BC6227B746DCC7BED" sap:content-version="1">
+                <End Type="API_INSPECTIONLOT_SRV.A_InspectionCharacteristicType" Multiplicity="1" Role="FromRole_assoc_DE70EA7074ABA25BC6227B746DCC7BED">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="API_INSPECTIONLOT_SRV.A_InspSampleResultType" Multiplicity="*" Role="ToRole_assoc_DE70EA7074ABA25BC6227B746DCC7BED"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_DE70EA7074ABA25BC6227B746DCC7BED">
+                        <PropertyRef Name="InspectionCharacteristic"/>
+                        <PropertyRef Name="InspPlanOperationInternalID"/>
+                        <PropertyRef Name="InspectionLot"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_DE70EA7074ABA25BC6227B746DCC7BED">
+                        <PropertyRef Name="InspectionCharacteristic"/>
+                        <PropertyRef Name="InspPlanOperationInternalID"/>
+                        <PropertyRef Name="InspectionLot"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_37B239FAFA5558593504588E89D2F137" sap:content-version="1">
+                <End Type="API_INSPECTIONLOT_SRV.A_InspectionCharacteristicType" Multiplicity="1" Role="FromRole_assoc_37B239FAFA5558593504588E89D2F137">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="API_INSPECTIONLOT_SRV.A_InspectionResultValueType" Multiplicity="*" Role="ToRole_assoc_37B239FAFA5558593504588E89D2F137"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_37B239FAFA5558593504588E89D2F137">
+                        <PropertyRef Name="InspectionCharacteristic"/>
+                        <PropertyRef Name="InspPlanOperationInternalID"/>
+                        <PropertyRef Name="InspectionLot"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_37B239FAFA5558593504588E89D2F137">
+                        <PropertyRef Name="InspectionCharacteristic"/>
+                        <PropertyRef Name="InspPlanOperationInternalID"/>
+                        <PropertyRef Name="InspectionLot"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_F0B9249E748B5549D1ADDF948340FFD7" sap:content-version="1">
+                <End Type="API_INSPECTIONLOT_SRV.A_InspLotMatlDocItemType" Multiplicity="1" Role="FromRole_assoc_F0B9249E748B5549D1ADDF948340FFD7"/>
+                <End Type="API_INSPECTIONLOT_SRV.A_InspLotMatlDocItmSrlNmbrType" Multiplicity="*" Role="ToRole_assoc_F0B9249E748B5549D1ADDF948340FFD7"/>
+            </Association>
+            <Association Name="assoc_9E6C23E6EE857B6A5C1543120D0F85EA" sap:content-version="1">
+                <End Type="API_INSPECTIONLOT_SRV.A_InspectionLotType" Multiplicity="1" Role="FromRole_assoc_9E6C23E6EE857B6A5C1543120D0F85EA"/>
+                <End Type="API_INSPECTIONLOT_SRV.A_InspectionLotWithStatusType" Multiplicity="1" Role="ToRole_assoc_9E6C23E6EE857B6A5C1543120D0F85EA"/>
+            </Association>
+            <EntityContainer Name="API_INSPECTIONLOT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="A_InspectionCharacteristic" EntityType="API_INSPECTIONLOT_SRV.A_InspectionCharacteristicType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspectionLot" EntityType="API_INSPECTIONLOT_SRV.A_InspectionLotType" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspectionLotWithStatus" EntityType="API_INSPECTIONLOT_SRV.A_InspectionLotWithStatusType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspectionOperation" EntityType="API_INSPECTIONLOT_SRV.A_InspectionOperationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspectionResult" EntityType="API_INSPECTIONLOT_SRV.A_InspectionResultType" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspectionResultValue" EntityType="API_INSPECTIONLOT_SRV.A_InspectionResultValueType" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspectionSubset" EntityType="API_INSPECTIONLOT_SRV.A_InspectionSubsetType" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspLotMatlDocItem" EntityType="API_INSPECTIONLOT_SRV.A_InspLotMatlDocItemType" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspLotMatlDocItmSrlNmbr" EntityType="API_INSPECTIONLOT_SRV.A_InspLotMatlDocItmSrlNmbrType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspLotSerialNumber" EntityType="API_INSPECTIONLOT_SRV.A_InspLotSerialNumberType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspLotUsageDecision" EntityType="API_INSPECTIONLOT_SRV.A_InspLotUsageDecisionType" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspSampleCharacteristic" EntityType="API_INSPECTIONLOT_SRV.A_InspSampleCharacteristicType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_InspSampleResult" EntityType="API_INSPECTIONLOT_SRV.A_InspSampleResultType" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_DE70EA7074ABA25BC6227B746DCC7BED" Association="API_INSPECTIONLOT_SRV.assoc_DE70EA7074ABA25BC6227B746DCC7BED" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_InspectionCharacteristic" Role="FromRole_assoc_DE70EA7074ABA25BC6227B746DCC7BED"/>
+                    <End EntitySet="A_InspSampleResult" Role="ToRole_assoc_DE70EA7074ABA25BC6227B746DCC7BED"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F0B9249E748B5549D1ADDF948340FFD7" Association="API_INSPECTIONLOT_SRV.assoc_F0B9249E748B5549D1ADDF948340FFD7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_InspLotMatlDocItem" Role="FromRole_assoc_F0B9249E748B5549D1ADDF948340FFD7"/>
+                    <End EntitySet="A_InspLotMatlDocItmSrlNmbr" Role="ToRole_assoc_F0B9249E748B5549D1ADDF948340FFD7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_37B239FAFA5558593504588E89D2F137" Association="API_INSPECTIONLOT_SRV.assoc_37B239FAFA5558593504588E89D2F137" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_InspectionCharacteristic" Role="FromRole_assoc_37B239FAFA5558593504588E89D2F137"/>
+                    <End EntitySet="A_InspectionResultValue" Role="ToRole_assoc_37B239FAFA5558593504588E89D2F137"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9E6C23E6EE857B6A5C1543120D0F85EA" Association="API_INSPECTIONLOT_SRV.assoc_9E6C23E6EE857B6A5C1543120D0F85EA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_InspectionLot" Role="FromRole_assoc_9E6C23E6EE857B6A5C1543120D0F85EA"/>
+                    <End EntitySet="A_InspectionLotWithStatus" Role="ToRole_assoc_9E6C23E6EE857B6A5C1543120D0F85EA"/>
+                </AssociationSet>
+                <FunctionImport Name="A_InspectionSubsetTrigger_valuation" ReturnType="API_INSPECTIONLOT_SRV.A_InspectionSubsetType" EntitySet="A_InspectionSubset" m:HttpMethod="POST" sap:action-for="API_INSPECTIONLOT_SRV.A_InspectionSubsetType" sap:applicable-path="Trigger_valuation_ac">
+                    <Parameter Name="InspectionLot" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Inspection Lot"/>
+                    <Parameter Name="InspPlanOperationInternalID" Type="Edm.String" Mode="In" MaxLength="8" sap:label="Current Node No."/>
+                    <Parameter Name="InspectionSubsetInternalID" Type="Edm.String" Mode="In" MaxLength="6" sap:label="Sample"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.2.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.A_InspectionCharacteristicType/to_InspResultValue" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.A_InspectionCharacteristicType/to_InspSmplResult" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionSubset" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Trigger_valuation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Trigger_valuation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspLotMatlDocItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_InspLotMatlDocItmSrlNmbr"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionCharacteristic" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_InspResultValue"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_InspSmplResult"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionLot" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_InspectionLotWithStatus"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.A_InspectionLotType/InspectionLotType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="InspectionLotType"/>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.A_InspectionResultType/InspectionResultOrigin" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="InspectionResultOrigin"/>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.A_InspSampleCharacteristicType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>InspectionSubsetInternalID</PropertyPath>
+                        <PropertyPath>InspectionCharacteristic</PropertyPath>
+                        <PropertyPath>InspPlanOperationInternalID</PropertyPath>
+                        <PropertyPath>InspectionLot</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.A_InspSampleResultType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>InspectionSubsetInternalID</PropertyPath>
+                        <PropertyPath>InspectionCharacteristic</PropertyPath>
+                        <PropertyPath>InspPlanOperationInternalID</PropertyPath>
+                        <PropertyPath>InspectionLot</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.A_InspectionCharacteristicType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>InspectionCharacteristic</PropertyPath>
+                        <PropertyPath>InspPlanOperationInternalID</PropertyPath>
+                        <PropertyPath>InspectionLot</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.A_InspectionResultType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>InspectionCharacteristic</PropertyPath>
+                        <PropertyPath>InspPlanOperationInternalID</PropertyPath>
+                        <PropertyPath>InspectionLot</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.A_InspectionResultValueType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>InspResultValueInternalID</PropertyPath>
+                        <PropertyPath>InspectionCharacteristic</PropertyPath>
+                        <PropertyPath>InspPlanOperationInternalID</PropertyPath>
+                        <PropertyPath>InspectionLot</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.A_InspectionSubsetType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>InspectionSubsetInternalID</PropertyPath>
+                        <PropertyPath>InspPlanOperationInternalID</PropertyPath>
+                        <PropertyPath>InspectionLot</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionLot" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads inspection lots with data at header level."/>
+                        <PropertyValue Property="LongDescription" String="Retrieves inspection lots with data at inspection lot header level, for example, material, plant, inspection type, and inspection lot origin."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads the header data of a specific inspection lot."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a specific inspection lot with data at inspection lot header level, for example, material, plant, inspection type, and inspection lot origin."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Creates an inspection lot."/>
+                        <PropertyValue Property="LongDescription" String="Creates an inspection lot of origin 89 (Miscellaneous). If an inspection specification, for example a plan, can be determined, inspection operations and characteristics are created as well."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates the header data of a specific inspection lot."/>
+                        <PropertyValue Property="LongDescription" String="Updates the header data of a specific inspection lot, for example, material, plant, inspection type, or inspection lot origin."/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionLot" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_InspectionLotWithStatus"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads status information for an inspection lot."/>
+                                            <PropertyValue Property="LongDescription" String="Retrieves inspection lot status information for a specific inspection lot by following the corresponding association."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionLotWithStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads inspection lot status information."/>
+                        <PropertyValue Property="LongDescription" String="Retrieves inspection lot status information, for example, whether results are confirmed or defects are recorded."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads inspection lot status information by its key."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves the inspection lot status information of a specific inspection lot, for example, whether results are confirmed or defects are recorded."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionOperation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads inspection operations."/>
+                        <PropertyValue Property="LongDescription" String="Retrieves inspection operations including data from the inspection plan."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific inspection operation."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a single inspection operation by its key fields (inspection lot, current node number from order counter)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionSubset" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads inspection points."/>
+                        <PropertyValue Property="LongDescription" String="Retrieves inspection point records of the type &quot;freely defined&quot;."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific inspection point."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a single inspection point by its key fields (inspection lot, current node number from order counter, inspection point number)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Creates an inspection point and related inspection point characteristics."/>
+                        <PropertyValue Property="LongDescription" String="Creates an inspection point record of the type &quot;freely defined&quot;, together with the related inspection point characteristic records."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates a specific inspection point."/>
+                        <PropertyValue Property="LongDescription" String="Updates a single inspection point. You need to provide values for the key fields (inspection lot, current node number from order counter, inspection point number)."/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionSubsetTrigger_valuation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.Description" String="Triggers the automatic valuation of an inspection point."/>
+                <Annotation Term="Core.LongDescription" String="Triggers the automatic valuation of an inspection point. As a prerequisite, the inspection point must be in a state that allows automatic valuation."/>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionCharacteristic" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads inspection characteristics."/>
+                        <PropertyValue Property="LongDescription" String="Retrieves inspection characteristics created for inspection operations."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific inspection characteristic."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a single inspection characteristic by its key fields (inspection lot, current node number from order counter, inspection characteristic)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionCharacteristic" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_InspResultValue"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads single inspection results for an inspection characteristic."/>
+                                            <PropertyValue Property="LongDescription" String="Retrieves single inspection results for an inspection characteristic of an inspection lot or inspection point by following the corresponding association."/>
+                                        </Record>
+                                    </PropertyValue>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Creates a single inspection result for an inspection characteristic."/>
+                                            <PropertyValue Property="LongDescription" String="Creates a single inspection result for an inspection characteristic of an inspection lot or inspection point by following the corresponding association."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_InspSmplResult"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads a summarized inspection result for an inspection characteristic of an inspection point."/>
+                                            <PropertyValue Property="LongDescription" String="Retrieves a summarized inspection result for an inspection characteristic of an inspection point by following the corresponding association."/>
+                                        </Record>
+                                    </PropertyValue>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Creates a summarized inspection result for an inspection characteristic of an inspection point."/>
+                                            <PropertyValue Property="LongDescription" String="Creates a summarized inspection result for an inspection characteristic of an inspection point by following the corresponding association."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspSampleCharacteristic" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads inspection characteristics of inspection points."/>
+                        <PropertyValue Property="LongDescription" String="Retrieves inspection characteristics of inspection points."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific inspection characteristic of an inspection point."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a single inspection characteristic of an inspection point by its key fields (inspection lot, current node number of order counter, inspection characteristic)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionResult" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads summarized inspection results."/>
+                        <PropertyValue Property="LongDescription" String="Retrieves summarized inspection results recorded for inspection characteristics."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific summarized inspection result for an inspection characteristic."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a single summarized inspection result for an inspection characteristic by its key fields (inspection lot, current node number of order counter, inspection characteristic)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Creates a summarized inspection result."/>
+                        <PropertyValue Property="LongDescription" String="Creates a summarized inspection result for an inspection characteristic."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates a specific summarized inspection result for an inspection characteristic."/>
+                        <PropertyValue Property="LongDescription" String="Updates a single summarized inspection result for an inspection characteristic. You need to provide values for the key fields (inspection lot, current node number of order counter,  inspection characteristic)."/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspSampleResult" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads summarized inspection results recorded for inspection points."/>
+                        <PropertyValue Property="LongDescription" String="Retrieves summarized inspection results recorded for inspection characteristics of inspection points."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific summarized inspection result recorded for an inspection point."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a single summarized inspection result recorded for an inspection point by its key fields (inspection lot, current node number of order counter, inspection characteristic, inspection point)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Not supported."/>
+                        <PropertyValue Property="LongDescription" String="This operation is not supported. To create a summarized inspection result for an inspection characteristic of an inspection point, you execute a POST request against the URI addressing the association-related entity set A_InspSampleResult for the specified characteristic and inspection point."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates a specific summarized inspection result recorded for an inspection point."/>
+                        <PropertyValue Property="LongDescription" String="Updates a single summarized inspection result recorded for an inspection point. You need to provide values for the key fields (inspection lot, current node number of order counter, inspection characteristic, inspection point)."/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspectionResultValue" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads single inspection result values."/>
+                        <PropertyValue Property="LongDescription" String="Retrieves single inspection results recorded for inspection characteristics or inspection point characteristics."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific single inspection result value."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a specific single inspection result recorded for an inspection characteristic or an inspection point characteristic by its key fields (inspection lot, current node number of order counter, inspection characteristic, number of the individual result)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Not supported."/>
+                        <PropertyValue Property="LongDescription" String="This operation is not supported. To create a single inspection result for an inspection characteristic, you execute a POST request against the URI addressing the association-related entity set A_InspectionResultValue for the specified characteristic."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates a specific single inspection result value."/>
+                        <PropertyValue Property="LongDescription" String="Updates a specific single inspection result recorded for an inspection characteristic or an inspection point characteristic. You need to provide values for the key fields (inspection lot, current node number of order counter, inspection characteristic, number of the individual result)."/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspLotUsageDecision" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads usage decisions made for inspection lots."/>
+                        <PropertyValue Property="LongDescription" String="Retrieves usage decisions that were made for inspection lots."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific usage decision for an inspection lot."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a single usage decision by its key field inspection lot."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Creates a usage decision."/>
+                        <PropertyValue Property="LongDescription" String="Creates a usage decision record for an inspection lot."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates a specific usage decision for an inspection lot."/>
+                        <PropertyValue Property="LongDescription" String="Updates a single usage decision. You need to provide a value for the key field inspection lot."/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspLotMatlDocItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads stock postings for inspection lots in the form of material document items."/>
+                        <PropertyValue Property="LongDescription" String="Reads material document items for inspection lots to get an overview of the stock postings for inspection lots."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific stock posting for an inspection lot."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a single material document item by its key fields (inspection lot, line number in list of inspection lot material document items)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Creates a stock posting for an inspection lot in the form of a material document item."/>
+                        <PropertyValue Property="LongDescription" String="Creates a material document item for an inspection lot, which includes stock posting data and a list of serial numbers if the inspection lot has serialized materials."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_InspLotMatlDocItmSrlNmbr"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads a specific stock posting with serial numbers posted for an inspection lot."/>
+                                            <PropertyValue Property="LongDescription" String="Retrieves a specific stock posting including serial numbers to get an overview of the stock posting and the serial numbers posted with it."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspLotSerialNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads serial numbers for inspection lots."/>
+                        <PropertyValue Property="LongDescription" String="Reads serial numbers for inspection lots with serialized parts or materials."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific serial number for an inspection lot."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves a single serial number by its key fields (inspection lot, serial number)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities/A_InspLotMatlDocItmSrlNmbr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads information on serial numbers for stock postings for inspection lots."/>
+                        <PropertyValue Property="LongDescription" String="Reads information on serial numbers for stock postings for inspection lots, for example, its equipment number."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads information on a specific serial number for a stock posting for an inspection lot."/>
+                                <PropertyValue Property="LongDescription" String="Retrieves information on a single serial number by its key fields (inspection lot, line number in list of inspection lot material document items, equipment)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_INSPECTIONLOT_SRV.API_INSPECTIONLOT_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/sap/API_INSPECTIONLOT_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my409001.s4hana.cloud.sap:443/sap/opu/odata/sap/API_INSPECTIONLOT_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

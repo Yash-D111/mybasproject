@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        title="product type"
+        growingThreshold="20"
+        search="_onOwnerSearch"
+        confirm="_onOwnerValueHelpConfirm"
+        items="{OwnerModel>/results}"
+    >
+        <customData>
+            <core:CustomData
+                key="selectedPropertyPath"
+                value="{OwnerModel>ProductType}"
+                writeToDom="false"
+            />
+        </customData>
+        <items>
+            <StandardListItem
+                title="{OwnerModel>ProductType}"
+                description=" "
+                infoState="None"
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

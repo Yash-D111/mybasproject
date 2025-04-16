@@ -1,0 +1,237 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "qmreport",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.14.2",
+            "toolsId": "a3468fc3-aad3-48af-ba5c-cd0524f8d14e"
+        },
+        "dataSources": {
+            "API_INSPECTIONLOT_SRV": {
+                "uri": "/sap/opu/odata/sap/API_INSPECTIONLOT_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/API_INSPECTIONLOT_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_QM_INSPLOTDATASUMMARY_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_QM_INSPLOTDATASUMMARY_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_QM_INSPLOTDATASUMMARY_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_QM_SUMMARYREPORT_4_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_QM_SUMMARYREPORT_4_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_QM_SUMMARYREPORT_4_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_QM_INSPECTIONCHARACTE_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_QM_INSPECTIONCHARACTE_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_QM_INSPECTIONCHARACTE_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_QM_INSPECTIONRESULTSUM_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_QM_INSPECTIONRESULTSUM_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_QM_INSPECTIONRESULTSUM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_QM_MICSUMMARYREPORT_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_QM_MICSUMMARYREPORT_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_QM_MICSUMMARYREPORT_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.126.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "qmreport.i18n.i18n"
+                }
+            },
+            "API_INSPECTIONLOT_SRV": {
+                "dataSource": "API_INSPECTIONLOT_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_QM_INSPLOTDATASUMMARY_CDS": {
+                "dataSource": "YY1_QM_INSPLOTDATASUMMARY_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_QM_SUMMARYREPORT_4_CDS": {
+                "dataSource": "YY1_QM_SUMMARYREPORT_4_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_QM_INSPECTIONCHARACTE_CDS": {
+                "dataSource": "YY1_QM_INSPECTIONCHARACTE_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_QM_INSPECTIONRESULTSUM_CDS": {
+                "dataSource": "YY1_QM_INSPECTIONRESULTSUM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_QM_MICSUMMARYREPORT_CDS": {
+                "dataSource": "YY1_QM_MICSUMMARYREPORT_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "qmreport.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteQMreport",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetQMreport"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetQMreport": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "QMreport",
+                    "viewName": "QMreport"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "qmreport.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "qmreport"
+    }
+}

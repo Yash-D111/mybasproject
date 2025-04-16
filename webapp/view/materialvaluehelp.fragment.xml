@@ -1,0 +1,30 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="_IDGenSelectDialog1"
+        title="Material"
+        growingThreshold="20"
+        liveChange="_onLiveChange"
+        search="_onSearch"
+        confirm="_onMaterialValueHelpConfirm"
+        multiSelect="true"
+        items="{MaterialDataModel>/results}"
+    >
+        <customData>
+            <core:CustomData
+                key="selectedPropertyPath"
+                value="{MaterialDataModel>Material}"
+                writeToDom="false"
+            />
+        </customData>
+        <items>
+            <StandardListItem
+                id="_IDGenStandardListItem1"
+                title="{MaterialDataModel>Material}"
+                infoState="None"
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>
