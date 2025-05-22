@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: zoeedetailstfreport
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: development_tenant
+          url: https://my409013.s4hana.cloud.sap
+          authenticationType: reentranceTicket # SAML support for vscode
+        app:
+          name: ZOEEDETAILSTF
+          description: OEE Details TF
+          package: ZDEV_EXT
+          transport: C9VK902349
+        exclude:
+          - /test/
